@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-md navbar-light bg-dark">
+  <a href="{% url 'home' %}" class="navbar-brand">
+    <i class="fa-solid fa-shop fa-2x" style="color: yellow"></i>
+  </a>
+  <button
+    type="button"
+    class="navbar-toggler bg-light"
+    data-toggle="collapse"
+    data-target="#nav"
+    name="button"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="nav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle"
+          href="Categories"
+          data-toggle="dropdown">Categories</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'home' %}">All Product </a>
+          {% for category in links %}
+
+          <a class="dropdown-item" href="{{category.get_url}}">{{category.name}}</a>
+          {% endfor %}
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3"
+          href="#"
+          >Contact</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3"
+          href="{% url 'about' %}">About</a>
+      </li>
+      {% if request.user.is_authenticated and request.user.first_name   %}
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle"  data-toggle="dropdown">
+          Welcome , {{ request.user.first_name}} <i class="fas fa-user circle"></i>
+
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'order_history' %}">Order History </a>
+
+
+
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3" href="{% url 'signout' %}">
+        Sign Out <i class="fas fa-sign-out-alt"></i>
+
+        </a>
+
+      {% else %}
+    <li class="nav-item">
+      <a
+        class="nav-link text-light text-uppercase font-weight-bold px-3" href="{% url 'signup'  %}">
+      Sign Up <i class="fas fa-user-plus"></i>
+
+      </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3" href="{% url 'signin'  %}">
+        Sign in <i class="fas fa-sign-in-alt"></i>
+
+        </a>
+        </li>
+      {% endif   %}
+
+      {% if item_count > 0 %}
+      <li class="nav-item">
+        <a
+          class="nav-link text-light text-uppercase font-weight-bold px-3"
+          href="{% url 'cart_detail'   %}">
+          <i class="fas fa-shopping-cart"></i>({{item_count}} )
+        </a>
+      {% endif %}
+      </li>
+
+    </ul>
+    <form class="form-inline ml-3" action= "{% url 'search' %}" , method="GET">
+      <div class="input-group">
+        <input type="text" name="title"  class="form-control" placeholder="Search" />
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-warning" >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>

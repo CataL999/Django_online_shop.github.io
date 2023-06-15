@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block styles %}
+<style>
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .social-icons {
+        margin-top: 40px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 24px;
+        color: #555;
+    }
+
+    .verification-icons {
+        margin-top: 40px;
+    }
+
+    .verification-icons i {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 24px;
+        color: #007bff;
+    }
+
+    body {
+        animation: changeBackgroundColor 4s infinite;
+    }
+
+    @keyframes changeBackgroundColor {
+        0% {
+            background-color: #FF0000;
+        }
+        25% {
+            background-color: #00FF00;
+        }
+        50% {
+            background-color: #0000FF;
+        }
+        75% {
+            background-color: #FFFF00;
+        }
+        100% {
+            background-color: #FF00FF;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid about-container">
+    <h1 class="about-title">About Us</h1>
+    <p class="about-text">Welcome to our online store!</p>
+    <p class="about-text">We are a dedicated team that offers quality products and excellent services.</p>
+    <p class="about-text">Our online store was established with passion and the desire to provide a unique and enjoyable shopping experience.</p>
+    <p class="about-text">We have a wide range of premium products, carefully selected for you. Quality and customer satisfaction are our top priorities.</p>
+    <p class="about-text">Thank you for choosing to shop at our online store. Our team is here to assist you and ensure that your shopping experience is fully satisfying.</p>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+</div>
+{% endblock %}

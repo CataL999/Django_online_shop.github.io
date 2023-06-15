@@ -1,0 +1,102 @@
+body {
+  background: white;
+}
+
+.product_title {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.product_text {
+  padding-right: 2px;
+}
+
+.product_description {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.errorlist li {
+  color: red;
+  font-weight: bold;
+}
+
+.custom_div {
+  margin-bottom: 20px !important;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: transparent; /* Schimbă culoarea de fundal în gri deschis */
+  border-color: transparent;
+}
+
+.card-footer p,
+.card-footer h5 {
+  margin: 5px 0; /* Adaugă o margine de 5px în sus și în jos */
+  font-size: 16px;
+  text-align: center;
+  line-height: 1;
+}
+
+.add-to-cart-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 10px; /* Adaugă un spațiu de 10px între preț și butonul "Add to Cart" */
+}
+
+.add-to-cart-btn i {
+  font-size: 24px;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-bottom: 5px; /* Adaugă un spațiu de 5px între iconiță și text */
+}
+
+.add-to-cart-btn:hover i {
+  color: #0056b3;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #17a2b8;
+  margin-bottom: 10px;
+}
+
+.out-of-stock {
+  color: red;
+  font-weight: bold;
+}
+
+.product-details {
+  margin-top: 10px;
+}
+
+.product-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-details table td {
+  padding: 5px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.product-details table td:first-child {
+  font-weight: bold;
+}

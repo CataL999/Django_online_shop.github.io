@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product{% endblock %}
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/medium-zoom.min.css' %}">
+  <style>
+    .zoomable-image-container {
+      position: relative;
+    }
+
+    .zoomable-image {
+      cursor: zoom-in;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .zoomable-image:hover {
+      transform: scale(1.1);
+    }
+
+    .zoom-controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .zoom-controls button {
+      background-color: transparent;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row mt-5">
+    <div class="col-10 mx-auto col-md-6 my-3">
+      <div class="zoomable-image-container">
+        <img src="{{product.image.url}}" alt="" class="zoomable-image" />
+        <div class="zoom-controls">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-10 mx-auto col-md-6 my-3">
+      <div>
+        <h1 class="product_title">{{product.name}}</h1>
+        <h5 class="text-info font-italic mb-3">
+          <span class="mr-1">{{product.price}}</span>$
+        </h5>
+        <p class="product_description">Product Description</p>
+        <p class="text-justify product_text">{{product.description}}</p>
+        {% if product.stock <= 0 %}
+        <p class="text-justify product_text"><b>Out of stock</b></p>
+        {% else %}
+        <a href="{% url 'add_cart' product.id %}">
+          <button type="button" name="button" class="btn btn-secondary">
+            Add to cart
+          </button>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'js/medium-zoom.min.js' %}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const zoomableImage = document.querySelector('.zoomable-image');
+      const zoomInButton = document.querySelector('.btn-zoom-in');
+      const zoomOutButton = document.querySelector('.btn-zoom-out');
+      const zoomOptions = {
+        margin: 10,
+      };
+
+      zoomableImage.addEventListener('click', function () {
+        mediumZoom(zoomableImage, zoomOptions).open();
+      });
+
+      zoomInButton.addEventListener('click', function () {
+        mediumZoom(zoomableImage, zoomOptions).zoomIn();
+      });
+
+      zoomOutButton.addEventListener('click', function () {
+        mediumZoom(zoomableImage, zoomOptions).zoomOut();
+      });
+    });
+  </script>
+{% endblock %}
